@@ -12,7 +12,7 @@ public class TennisGame3 implements TennisGame {
     }
 
     public String getScore() {
-        String s;
+       /* String s;
         if (p1 < 4 && p2 < 4 && !(p1 + p2 == 6)) {
             String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"}; 
             s = p[p1];
@@ -22,7 +22,28 @@ public class TennisGame3 implements TennisGame {
                 return "Deuce";
             s = p1 > p2 ? p1N : p2N;
             return ((p1-p2)*(p1-p2) == 1) ? "Advantage " + s : "Win for " + s;
+        }*/
+        ////////////////////////////////
+        if (p1==p2 && p1>=3) {
+            return "Deuce";
         }
+        else if (Math.abs(p1-p2)==1 && (p1+p2)>6){
+            if (p1>p2)
+                return "Advantage "+p1N;
+            return "Advantage "+p2N;
+        }
+        else if (Math.abs(p1-p2)>=2 && (p1>3||p2>3)){
+            if (p1>p2)
+                return "Win for " + p1N;
+            return "Win for " + p2N;
+        }
+        else {
+            String[] p = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
+            if (p1 == p2)
+                return  p[p1] + "-All";
+            return p[p1] + "-" + p[p2];
+        }
+
     }
     
     public void wonPoint(String playerName) {
